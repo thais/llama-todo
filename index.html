@@ -6,8 +6,11 @@
 <body>
   <h1>Llama TODO, Lazy version</h1>
   <div>
-    <p>Task <input data-bind="value: task" type="text"/></p>
-    <p data-bind="text: task"></p>
+    <label>Task:<input data-bind="value: task" type="text"/></label>
+    <button>Add</button>
+    <ul data-bind="foreach: tasks">
+      <li data-bind="text: $data"></li>
+    </ul>
   </div>
 
   <script type="text/javascript" src="js/main.js"></script>
