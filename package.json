@@ -1,0 +1,23 @@
+{
+  "name": "llama-todo",
+  "version": "1.0.0",
+  "description": "Best todo ever",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thaishamilton/llama-todo.git"
+  },
+  "author": "Thais Hamilton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thaishamilton/llama-todo/issues"
+  },
+  "homepage": "https://github.com/thaishamilton/llama-todo",
+  "dependencies": {
+    "node-libs-browser": "^0.5.2",
+    "webpack": "^1.10.1"
+  }
+}
