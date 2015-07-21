@@ -1,16 +1,19 @@
+var db = require("./db");
 var ViewModel = function (taskName) {
-  this.tasks = ko.observableArray(
-    [
-      "Js: Learn Knockout",
-      "Book: Chapt 01 Code Complete",
-      "Fun: Dragon Ball Super - E02"
-    ]
-  );
+  var self = this;
+  this.tasks = ko.observableArray([]);
+  db.establishConnection();
+
+  db.getTasks(function(child){
+    self.tasks.push(child.val().tasktest); 
+    console.log(child.val().tasktest);
+  }); 
+
   this.task = ko.observable(taskName);
   this.selectedTasks = ko.observableArray(); 
 
   this.addTask = function () {
-    this.tasks.push(this.task());
+    db.push({"tasktest": this.task()});
     this.task("");
   };
 

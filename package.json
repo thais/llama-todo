@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/thaishamilton/llama-todo",
   "dependencies": {
+    "firebase": "^2.2.7",
     "node-libs-browser": "^0.5.2",
     "webpack": "^1.10.1"
   }
