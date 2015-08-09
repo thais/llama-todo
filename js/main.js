@@ -6,16 +6,16 @@ var ViewModel = function (taskName) {
   this.tasks = ko.observableArray([]);
   db.establishConnection();
 
-  db.getTasks(function(child){
-    self.tasks.push({'name': child.val().name, 'completed': child.val().completed});
-    //self.tasks.push(child.val().name); 
-    console.log(child.val().name);
-    console.log(child.val().completed);
+  db.getTasks(function (tasks) {
+    self.tasks(tasks); 
   }); 
 
   this.task = ko.observable(taskName);
   this.selectedTasks = ko.observableArray([]); 
-
+  
+  test = function () {
+    console.log('olar');
+  }
   this.addTask = function () {
     db.addTask({"name": this.task(), "completed": false});
     this.task("");

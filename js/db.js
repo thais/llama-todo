@@ -7,16 +7,18 @@ Database.prototype.establishConnection = function() {
   this.connection = new Firebase("https://crackling-torch-1034.firebaseio.com");
 } 
 
-Database.prototype.getTasks = function(callback) {
-  this.connection.on("value", function(snapshot) {
-    snapshot.forEach(function(child){
-      callback(child);
+Database.prototype.getTasks = function (callback) {
+  this.connection.on("value", function (snapshot) {
+    var tasks = [];
+    snapshot.forEach(function (child) {
+      tasks.push({ name: child.val().name, completed: child.val().completed });
     });
+    callback(tasks);
   });
 }
 
-Database.prototype.addTask = function(name) {
-  this.connection.push(name);
+Database.prototype.addTask = function(task) {
+  this.connection.push(task);
 }
 
 Database.prototype.removeSelectedTasks = function(callback) {

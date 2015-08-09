@@ -12,7 +12,7 @@
     <div data-bind="foreach: tasks">
       <div>
         <span data-bind="text: name"> </span>
-        <input type="checkbox" data-bind="checked: completed"/> 
+        <input type="checkbox" data-bind="checked: completed, click: test"/> 
       </div>
     </div>
     <button data-bind="click: removeTask">Remove</button>
