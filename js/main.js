@@ -11,22 +11,23 @@ var ViewModel = function (taskName) {
   }); 
 
   this.task = ko.observable(taskName);
-  this.selectedTasks = ko.observableArray([]); 
-  
-  test = function () {
-    console.log('olar');
-  }
+
   this.addTask = function () {
     db.addTask({"name": this.task(), "completed": false});
     this.task("");
   };
-  
+
   this.markAsDone = function () {
     return true;
   };
 
   this.removeTask = function () {
-    db.removeSelectedTasks(this.selectedTasks);
+    self.tasks().forEach(function(task){
+      if(task.completed) {
+        self.tasks.remove(task);
+        db.removeCompletedTasks(task);
+      }
+    });
   };
 
   this.removeAll = function () {
