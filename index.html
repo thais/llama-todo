@@ -3,6 +3,7 @@
 <head>
   <script type="text/javascript" src="js/knockout-3.3.0.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
   <h1>Llama TODO, Lazy version</h1>
@@ -10,13 +11,14 @@
     <label>Task:<input data-bind="value: task" type="text"/></label>
     <button data-bind="click: addTask">Add</button>
     <div data-bind="foreach: tasks">
-      <div>
-        <span data-bind="text: name"> </span>
+      <div class="task">
+        <span class="" data-bind="text: name"> </span>
         <input type="checkbox" data-bind="checked: completed"/> 
       </div>
     </div>
     <button data-bind="click: removeTask">Remove</button>
     <button data-bind="click: removeAll">Remove All</button>
+    <button data-bind="click: markAsDone">Mark as done</button>
   </div>
 
   <script type="text/javascript" src="build/bundle.js"></script>

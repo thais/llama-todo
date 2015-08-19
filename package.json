@@ -19,6 +19,7 @@
   "dependencies": {
     "firebase": "^2.2.7",
     "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
     "node-libs-browser": "^0.5.2",
     "webpack": "^1.10.1"
   }

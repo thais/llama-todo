@@ -11,7 +11,7 @@ Database.prototype.getTasks = function (callback) {
   this.connection.on("value", function (snapshot) {
     var tasks = [];
     snapshot.forEach(function (child) {
-      tasks.push({ name: child.val().name, completed: child.val().completed });
+      tasks.push({ name: child.val().name, completed: child.val().completed, key: child.key() });
     });
     callback(tasks);
   });
@@ -21,12 +21,15 @@ Database.prototype.addTask = function(task) {
   this.connection.push(task);
 }
 
-Database.prototype.removeSelectedTasks = function(callback) {
-  console.log(callback);
+Database.prototype.removeCompletedTasks = function(tasks) {
+  var self = this;
+  tasks.forEach(function(task){
+    self.connection.child(task.key).remove();
+  });
 } 
 
 Database.prototype.removeAll = function() {
   this.connection.remove();
 } 
-  
+
 module.exports = new Database();

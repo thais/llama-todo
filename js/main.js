@@ -1,9 +1,11 @@
 var db = require("./db");
-require('jquery');
+var _ = require("lodash");
+var $ = require("jquery");
 
 var ViewModel = function (taskName) {
   var self = this;
   this.tasks = ko.observableArray([]);
+
   db.establishConnection();
 
   db.getTasks(function (tasks) {
@@ -18,16 +20,15 @@ var ViewModel = function (taskName) {
   };
 
   this.markAsDone = function () {
-    return true;
   };
 
   this.removeTask = function () {
-    self.tasks().forEach(function(task){
-      if(task.completed) {
-        self.tasks.remove(task);
-        db.removeCompletedTasks(task);
-      }
+    var completedTasks =_.filter(self.tasks(), function (task) {
+      return task.completed;
     });
+
+    self.tasks.removeAll(completedTasks);
+    db.removeCompletedTasks(completedTasks);
   };
 
   this.removeAll = function () {
