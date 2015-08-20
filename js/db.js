@@ -28,6 +28,10 @@ Database.prototype.removeCompletedTasks = function(tasks) {
   });
 } 
 
+Database.prototype.update = function(task, newValue) {
+  this.connection.child(task.key).set(newValue);
+}
+
 Database.prototype.removeAll = function() {
   this.connection.remove();
 } 

@@ -6,6 +6,8 @@ var ViewModel = function (taskName) {
   var self = this;
   this.tasks = ko.observableArray([]);
 
+  this.completedTasks = ko.observableArray([]);
+
   db.establishConnection();
 
   db.getTasks(function (tasks) {
@@ -13,13 +15,11 @@ var ViewModel = function (taskName) {
   }); 
 
   this.task = ko.observable(taskName);
+  this.completed = ko.observable(false);
 
   this.addTask = function () {
-    db.addTask({"name": this.task(), "completed": false});
+    db.addTask({"name": this.task(), "completed": this.completed() });
     this.task("");
-  };
-
-  this.markAsDone = function () {
   };
 
   this.removeTask = function () {
@@ -29,6 +29,13 @@ var ViewModel = function (taskName) {
 
     self.tasks.removeAll(completedTasks);
     db.removeCompletedTasks(completedTasks);
+  };
+
+  this.markAsDone = function (item, event) {
+    var span = $(event.target).prev('span');
+    span.toggleClass('completedtask');
+    db.update(item, { "name": item.name, "completed": item.completed }); 
+    return true;
   };
 
   this.removeAll = function () {

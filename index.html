@@ -12,13 +12,12 @@
     <button data-bind="click: addTask">Add</button>
     <div data-bind="foreach: tasks">
       <div class="task">
-        <span class="" data-bind="text: name"> </span>
-        <input type="checkbox" data-bind="checked: completed"/> 
+        <span data-bind="text: name, css: { completedtask: completed }"> </span>
+        <input type="checkbox" data-bind="checked: completed, event: { click: $root.markAsDone }"/> 
       </div>
     </div>
     <button data-bind="click: removeTask">Remove</button>
     <button data-bind="click: removeAll">Remove All</button>
-    <button data-bind="click: markAsDone">Mark as done</button>
   </div>
 
   <script type="text/javascript" src="build/bundle.js"></script>
