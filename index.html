@@ -9,15 +9,15 @@
   <h1>Llama TODO, Lazy version</h1>
   <div>
     <label>Task:<input data-bind="value: task" type="text"/></label>
-    <button data-bind="click: addTask">Add</button>
+    <button class="btn" data-bind="click: addTask">Add</button>
     <div data-bind="foreach: tasks">
       <div class="task">
         <span data-bind="text: name, css: { completedtask: completed }"> </span>
         <input type="checkbox" data-bind="checked: completed, event: { click: $root.markAsDone }"/> 
       </div>
     </div>
-    <button data-bind="click: removeTask">Remove</button>
-    <button data-bind="click: removeAll">Remove All</button>
+    <button class="btn" data-bind="click: removeTask">Remove</button>
+    <button class="btn" data-bind="click: removeAll">Remove All</button>
   </div>
 
   <script type="text/javascript" src="build/bundle.js"></script>
