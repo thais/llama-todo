@@ -8,15 +8,15 @@
 <body>
   <h1>Llama TODO, Lazy version</h1>
   <div>
-    <label>Task:<input data-bind="value: task, valueUpdate:'keypress' , event: { keypress: addTask}" type="text"/></label>
+    <label>Task:<input data-bind="value: task, valueUpdate:'keypress' , event: { keypress: addTask}" type="text" placeholder="Add your task here!" autofocus /></label>
     <div data-bind="foreach: tasks">
       <div class="task">
         <span data-bind="text: name, css: { completedtask: completed }"> </span>
         <input type="checkbox" data-bind="checked: completed, event: { click: $root.markAsDone }"/> 
       </div>
     </div>
-    <button class="btn" data-bind="click: removeTask">Remove</button>
-    <button class="btn" data-bind="click: removeAll">Remove All</button>
+    <button class="btn" data-bind="click: removeTask">Clear completed</button>
+    <button class="btn" data-bind="click: removeAll">Clear all</button>
   </div>
 
   <script type="text/javascript" src="build/bundle.js"></script>
