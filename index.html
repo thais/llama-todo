@@ -9,7 +9,6 @@
   <h1>Llama TODO, Lazy version</h1>
   <div>
     <label>Task:<input data-bind="value: task, valueUpdate:'keypress' , event: { keypress: addTask}" type="text"/></label>
-    <button class="btn" data-bind="click: addTask">Add</button>
     <div data-bind="foreach: tasks">
       <div class="task">
         <span data-bind="text: name, css: { completedtask: completed }"> </span>
