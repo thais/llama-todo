@@ -8,7 +8,7 @@
 <body>
   <h1>Llama TODO, Lazy version</h1>
   <div>
-    <label>Task:<input data-bind="value: task" type="text"/></label>
+    <label>Task:<input data-bind="value: task, valueUpdate:'keypress' , event: { keypress: addTask}" type="text"/></label>
     <button class="btn" data-bind="click: addTask">Add</button>
     <div data-bind="foreach: tasks">
       <div class="task">

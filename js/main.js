@@ -17,9 +17,13 @@ var ViewModel = function (taskName) {
   this.task = ko.observable(taskName);
   this.completed = ko.observable(false);
 
-  this.addTask = function () {
-    db.addTask({"name": this.task(), "completed": this.completed() });
-    this.task("");
+  this.addTask = function (item, event) {
+    if (event.keyCode === 13) {
+      db.addTask({"name": this.task(), "completed": this.completed() });
+      this.task("");
+    } else {
+      return true;
+    }
   };
 
   this.removeTask = function () {
