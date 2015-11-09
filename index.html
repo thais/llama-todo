@@ -7,6 +7,7 @@
 </head>
 <body>
   <h1>Llama TODO, Lazy version</h1>
+  <div class="llama-img"> </div>
   <div>
     <label>Task:<input data-bind="value: task, valueUpdate:'keypress' , event: { keypress: addTask}" type="text" placeholder="Add your task here!" autofocus /></label>
     <div data-bind="foreach: tasks">
